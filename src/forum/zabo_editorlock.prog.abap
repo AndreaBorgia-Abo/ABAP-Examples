@@ -1,10 +1,10 @@
 *&---------------------------------------------------------------------*
-*& Report ZEDITORLOCK
+*& Report ZABO_EDITORLOCK
 *&---------------------------------------------------------------------*
 *& Author: Gopi Narendra
 *& Source: https://answers.sap.com/questions/3637816/editor-lock-se38.html?childToView=3637933#comment-3637933
 *&---------------------------------------------------------------------*
-REPORT ZEDITORLOCK.
+REPORT ZABO_EDITORLOCK.
 TABLES: trdir. "System table TRDIR
 
 PARAMETERS: program LIKE trdir-name.

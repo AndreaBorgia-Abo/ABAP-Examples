@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <PROGDIR>
-    <NAME>ZMULTI_ALV_TO_EXCEL_VIA_MAIL</NAME>
+    <NAME>ZABO_EDITORLOCK</NAME>
     <SUBC>1</SUBC>
     <RSTAT>T</RSTAT>
     <RLOAD>E</RLOAD>
@@ -13,8 +13,8 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Multi ALV to Excel via mail</ENTRY>
-     <LENGTH>27</LENGTH>
+     <ENTRY>Lock / unlock programs</ENTRY>
+     <LENGTH>22</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

@@ -1,13 +1,14 @@
 *&---------------------------------------------------------------------*
-*& Report  Z_TRIGGER_EVENT                                             *
+*& Report  ZABO_TRIGGER_EVENT                                             *
 *&                                                                     *
 *&---------------------------------------------------------------------*
 *& Author: unknown
 *& Source: https://wiki.scn.sap.com/wiki/display/ABAP/Scheduling+background+job+by+triggering+an+event
 *&---------------------------------------------------------------------*
-REPORT  z_trigger_event                         .
+REPORT  zabo_trigger_event                         .
 
-* Note: I've tried with SAP_SYSTEM_START, it won't work!
+* Note: I've tried with SAP_SYSTEM_START, it won't work:
+* only custom events can be triggered.
 CALL FUNCTION 'BP_EVENT_RAISE'
   EXPORTING
     eventid                = 'Z_TRIGGER_JOB'

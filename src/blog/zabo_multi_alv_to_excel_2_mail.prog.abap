@@ -1,10 +1,10 @@
 *&---------------------------------------------------------------------*
-*& Report ZMULTI_ALV_TO_EXCEL_VIA_MAIL
+*& Report ZABO_MULTI_ALV_TO_EXCEL_2_MAIL
 *&---------------------------------------------------------------------*
 *& Author: James E. McDonough
 *& source: https://blogs.sap.com/2018/06/16/using-abap2xlsx-to-send-alv-table-output-as-excel-spreadsheet-via-internet-email/
 *&---------------------------------------------------------------------*
-REPORT ZMULTI_ALV_TO_EXCEL_VIA_MAIL.
+REPORT ZABO_MULTI_ALV_TO_EXCEL_2_MAIL.
   types          : row_counter    type n length 02.
   types          : email_recipient
                                   type adr6-smtp_addr.

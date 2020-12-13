@@ -1,10 +1,10 @@
 *&---------------------------------------------------------------------*
-*& Report ZABAP_FILTER_DEMO
+*& Report ZABO_FILTER_DEMO
 *&---------------------------------------------------------------------*
 *& Author: Oleg Bashkatov
 *& Source: https://answers.sap.com/answers/13203500/view.html
 *&---------------------------------------------------------------------*
-REPORT zabap_filter_demo.
+REPORT zabo_filter_demo.
 
 TYPES: BEGIN OF ts_line1
              , src_sys TYPE sysysid
