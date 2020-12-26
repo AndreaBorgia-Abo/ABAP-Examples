@@ -45,7 +45,7 @@ METHOD break_point.
     EXIT.
   ENDIF.
 
-  IF is_break_point_active( iv_aab_id ) = `x`.
+  IF is_break_point_active( iv_aab_id ) = abap_true.
     IF cl_gui_alv_grid=>offline( ) IS INITIAL.
 *     Foreground
       BREAK-POINT.
