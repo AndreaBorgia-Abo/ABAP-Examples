@@ -6,13 +6,10 @@
 *&---------------------------------------------------------------------*
 * Summary:
 * I've changed the example to call a generic test service[1] so that it
-* can be used to try the ICF client recorder [2].
+* can be used anywhere to try the ICF client recorder [2].
+* I have also added a clean de/serialization with a cloud-safe[3] class[4]
 * [1] https://jsonplaceholder.typicode.com/guide/
 * [2] https://blogs.sap.com/2006/04/05/icf-recording-a-possibility-for-analysing/
-*&---------------------------------------------------------------------*
-* TODO:
-* change fixed JSON string to type and convert it in a sane-way,
-*   possibly with a cloud-safe[3] class[4]
 * [3] https://answers.sap.com/answers/12948279/view.html
 * [4[ https://wiki.scn.sap.com/wiki/display/Snippets/One+more+ABAP+to+JSON+Serializer+and+Deserializer
 *&---------------------------------------------------------------------*
@@ -28,8 +25,14 @@
 *&---------------------------------------------------------------------*
 REPORT zabo_http_client.
 
+TYPES: BEGIN OF post_entity,
+         title  TYPE string,
+         body   TYPE string,
+         userid TYPE int2,
+         id     TYPE int2,
+       END OF post_entity.
+
 DATA: lo_response    TYPE REF TO     if_rest_entity.
-DATA: lo_json_deserializer TYPE REF TO cl_trex_json_deserializer.
 
 DATA: http_client TYPE REF TO if_http_client,
       rest_client TYPE REF TO cl_rest_http_client,
@@ -78,7 +81,21 @@ TRY.
         iv_value = if_rest_media_type=>gc_appl_json
     ).
 
-    DATA(jsonbody) = `{"title": "foo", "body": "bar", "userId": 1}`.
+* MEMO: quick and dirty way...
+*    DATA(jsonbody) = `{"title": "foo", "body": "bar", "userId": 1}`.
+
+* MEMO: ... or better way
+    DATA(abapbody) = VALUE post_entity(
+      title = `foo`
+      body = `bar`
+      userid = 1
+    ).
+    DATA(jsonbody) = /ui2/cl_json=>serialize(
+      data = abapbody
+      pretty_name = /ui2/cl_json=>pretty_mode-camel_case
+    ).
+    WRITE: / |JSON body: { jsonbody }|.
+
     rest_entity->set_string_data( jsonbody ).
 
     rest_client->if_rest_client~post( io_entity = rest_entity ).
@@ -88,8 +105,14 @@ TRY.
     DATA(http_status) = lo_response->get_header_field( '~status_code' ).
     DATA(response_string) = lo_response->get_string_data( ).
 
-    WRITE:/ | Status code: { http_status } ; response: { response_string } |.
+    /ui2/cl_json=>deserialize(
+      EXPORTING
+        json = response_string
+        pretty_name = /ui2/cl_json=>pretty_mode-camel_case
+      CHANGING
+        data = abapbody ).
 
+    WRITE:/ |Status code: { http_status } ; new ID = { abapbody-id } ; response: { response_string } |.
   CATCH cx_rest_client_exception INTO DATA(rest_client_exception).
 
     DATA(error) = rest_client_exception->get_longtext( ).
