@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_SPRX" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <PROXY_HEADER>
+    <item>
+     <OBJECT>DTEL</OBJECT>
+     <OBJ_NAME>ZVIESCOMPANY_TYPE_CODE</OBJ_NAME>
+     <OBJECT_M>DTEL</OBJECT_M>
+     <OBJ_NAME_M>ZVIESCOMPANY_TYPE_CODE</OBJ_NAME_M>
+     <HASH_ID>4189110448C62B49362F16C528CA0E4EA7DC23CB</HASH_ID>
+     <ID>&lt;type&gt; companyTypeCode urn:ec.europa.eu:taxud:vies:services:checkVat:types urn:ec.europa.eu:taxud:vies:services:checkVat:types</ID>
+     <IFR_GLOBAL>X</IFR_GLOBAL>
+     <IFR_TYPE>type</IFR_TYPE>
+     <IFR_NAME>companyTypeCode</IFR_NAME>
+     <IFR_NSPCE>urn:ec.europa.eu:taxud:vies:services:checkVat:types</IFR_NSPCE>
+     <IFR_GNSPCE>urn:ec.europa.eu:taxud:vies:services:checkVat:types</IFR_GNSPCE>
+     <GEN_VERS>0005</GEN_VERS>
+     <PREFIX>ZVIES</PREFIX>
+     <CATEGORY>ifmtypedef</CATEGORY>
+     <GEN_APPL>WEBSERVICES</GEN_APPL>
+     <X-ML_NSPCE>urn:ec.europa.eu:taxud:vies:services:checkVat:types</X-ML_NSPCE>
+     <X-ML_NAME>companyTypeCode</X-ML_NAME>
+    </item>
+   </PROXY_HEADER>
+   <PROXY_DATA>
+    <item>
+     <OBJECT>DTEL</OBJECT>
+     <OBJ_NAME>ZVIESCOMPANY_TYPE_CODE</OBJ_NAME>
+     <OBJECT1>DTEL</OBJECT1>
+     <OBJ_NAME1>ZVIESCOMPANY_TYPE_CODE</OBJ_NAME1>
+     <OBJECT2>DTEL</OBJECT2>
+     <OBJ_NAME2>ZVIESCOMPANY_TYPE_CODE</OBJ_NAME2>
+     <ID>&lt;type&gt; companyTypeCode urn:ec.europa.eu:taxud:vies:services:checkVat:types urn:ec.europa.eu:taxud:vies:services:checkVat:types</ID>
+     <IFR_TYPE>type</IFR_TYPE>
+     <IFR_NAME>companyTypeCode</IFR_NAME>
+     <IFR_XSDTYP>string</IFR_XSDTYP>
+     <IFR_PATTRN>[A-Z]{2}\-[1-9][0-9]?</IFR_PATTRN>
+     <IFR_SCALE>-2</IFR_SCALE>
+     <R3_TYPE>DTEL</R3_TYPE>
+     <R3_NAME>ZVIESCOMPANY_TYPE_CODE</R3_NAME>
+     <R3_TEXT>Proxy Data Element (generated)</R3_TEXT>
+     <R3_DATATYP>STRG</R3_DATATYP>
+     <CATEGORY>ifmtypedef</CATEGORY>
+    </item>
+   </PROXY_DATA>
+  </asx:values>
+ </asx:abap>
+</abapGit>
