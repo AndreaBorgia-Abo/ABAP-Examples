@@ -27,6 +27,12 @@
      <ENTRY>Test mode</ENTRY>
      <LENGTH>17</LENGTH>
     </item>
+    <item>
+     <ID>S</ID>
+     <KEY>P_VAT</KEY>
+     <ENTRY>VAT</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
    </TPOOL>
   </asx:values>
  </asx:abap>
