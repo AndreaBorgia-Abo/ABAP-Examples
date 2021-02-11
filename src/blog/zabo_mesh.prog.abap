@@ -64,7 +64,10 @@ CHECK sy-subrc = 0.
 READ TABLE ls_crm_team-managers ASSIGNING FIELD-SYMBOL(<manager>) WITH KEY name = <employee>-manager.
 CHECK sy-subrc = 0.
 * Question: why do I need a double space after Salary to line up with above example?
-WRITE: / |Jerry manager name: { <manager>-name }, Salary:  { <manager>-salary } (OLD)|.
+* Answer: Possible ADT bug, see: https://answers.sap.com/answers/13287770/view.html
+WRITE: / |Jerry manager name: { <manager>-name }, Salary:  { <manager>-salary } (OLD, ADT)|.
+* Also, note that using it twice in ADT lines up correctly without a second blankspace:
+WRITE: / |Jerry manager name: { <manager>-name }, Salary: { <manager>-salary } (OLD, GUI)|.
 
 " Use ABAP-Mesh
 LOOP AT ls_crm_team-managers\my_employee[ thomas ] ASSIGNING <employee>.
