@@ -1,6 +1,6 @@
 /*
 Author: Andrea Borgia
-Source: https://youtu.be/0eXR-2mgEVs
+Source: https://www.youtube.com/watch?v=0eXR-2mgEVs&t=4569s
 */
 @AbapCatalog.sqlViewName: 'ZABO_SESSIONVAR'
 @AbapCatalog.compiler.compareFilter: true

@@ -1,6 +1,6 @@
 /*
 Author: Andrea Borgia
-Source: https://youtu.be/0eXR-2mgEVs
+Source: https://www.youtube.com/watch?v=0eXR-2mgEVs&t=3360s
 
 Useful info:
 * Example won't work in cloud because of direct table access, see https://answers.sap.com/answers/12916499/view.html
