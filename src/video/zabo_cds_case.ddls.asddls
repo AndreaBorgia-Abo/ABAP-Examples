@@ -1,5 +1,5 @@
 /*
-Author: Andrea Borgia
+Author: Rishi
 Source: https://www.youtube.com/watch?v=0eXR-2mgEVs&t=5274s
 */
 @AbapCatalog.sqlViewName: 'ZABO_CASE'
