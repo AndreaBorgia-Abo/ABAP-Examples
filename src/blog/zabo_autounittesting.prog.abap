@@ -2,7 +2,11 @@
 *& Report zabo_autounittesting
 *&---------------------------------------------------------------------*
 *& Author: James E. McDonough
-*& Source: https://blogs.sap.com/2021/04/08/getting-acquainted-with-automating-abap-unit-testing-part-3/
+*& Source:
+*& https://blogs.sap.com/2021/03/31/getting-acquainted-with-automating-abap-unit-testing-part-1/
+*& https://blogs.sap.com/2021/04/04/getting-acquainted-with-automating-abap-unit-testing-part-2/
+*& https://blogs.sap.com/2021/04/08/getting-acquainted-with-automating-abap-unit-testing-part-3/
+*& https://blogs.sap.com/2021/04/11/getting-acquainted-with-automating-abap-unit-testing-part-4/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -291,5 +295,19 @@ CLASS tester                           DEFINITION
 ENDCLASS.
 CLASS tester                           IMPLEMENTATION.
   METHOD set_alv_field_catalog.
+    DATA         : alv_fieldcat_stack
+                                  TYPE slis_t_fieldcat_alv
+                 .
+    " Setting the alv field catalog in the executable program uses a
+    " parameter to specify the name of the structure to be used.  If
+    " this name is invalid, no field catalog entries will result.  Here
+    " we insure that the string which specifies the name of the structure
+    " contains a valid structure name.
+    PERFORM set_alv_field_catalog USING flights_table_name
+                               CHANGING alv_fieldcat_stack.
+    CALL METHOD cl_abap_unit_assert=>assert_not_initial
+      EXPORTING
+        act = alv_fieldcat_stack
+        msg = 'ALV fieldcatalog is empty'.
   ENDMETHOD.
 ENDCLASS.
