@@ -7,6 +7,7 @@
 *& https://blogs.sap.com/2021/04/04/getting-acquainted-with-automating-abap-unit-testing-part-2/
 *& https://blogs.sap.com/2021/04/08/getting-acquainted-with-automating-abap-unit-testing-part-3/
 *& https://blogs.sap.com/2021/04/11/getting-acquainted-with-automating-abap-unit-testing-part-4/
+*& https://blogs.sap.com/2021/04/14/getting-acquainted-with-automating-abap-unit-testing-part-5/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -31,7 +32,7 @@ TYPES            : flights_row    TYPE sflight
                  , discount       TYPE s_discount
                  .
 CONSTANTS        : flights_table_name
-                                  TYPE tabname   VALUE 'XFLIGHT'
+                                  TYPE tabname   VALUE 'SFLIGHT'
                  .
 * MEMO: until part 3, XFLIGHT is an intentional mistake!
 DATA             : flights_count  TYPE int4
