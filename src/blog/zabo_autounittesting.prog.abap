@@ -8,6 +8,7 @@
 *& https://blogs.sap.com/2021/04/08/getting-acquainted-with-automating-abap-unit-testing-part-3/
 *& https://blogs.sap.com/2021/04/11/getting-acquainted-with-automating-abap-unit-testing-part-4/
 *& https://blogs.sap.com/2021/04/14/getting-acquainted-with-automating-abap-unit-testing-part-5/
+*& https://blogs.sap.com/2021/04/18/getting-acquainted-with-automating-abap-unit-testing-part-6/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -306,9 +307,9 @@ CLASS tester                           IMPLEMENTATION.
     " contains a valid structure name.
     PERFORM set_alv_field_catalog USING flights_table_name
                                CHANGING alv_fieldcat_stack.
-    CALL METHOD cl_abap_unit_assert=>assert_not_initial
-      EXPORTING
-        act = alv_fieldcat_stack
-        msg = 'ALV fieldcatalog is empty'.
+    cl_abap_unit_assert=>assert_not_initial(
+      act                         = alv_fieldcat_stack
+      msg                         = 'ALV fieldcatalog is empty'
+      ).
   ENDMETHOD.
 ENDCLASS.
