@@ -9,6 +9,7 @@
 *& https://blogs.sap.com/2021/04/11/getting-acquainted-with-automating-abap-unit-testing-part-4/
 *& https://blogs.sap.com/2021/04/14/getting-acquainted-with-automating-abap-unit-testing-part-5/
 *& https://blogs.sap.com/2021/04/18/getting-acquainted-with-automating-abap-unit-testing-part-6/
+*& https://blogs.sap.com/2021/04/21/getting-acquainted-with-automating-abap-unit-testing-part-7/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -292,8 +293,9 @@ CLASS tester                           DEFINITION
                                        .
   PRIVATE SECTION.
     METHODS      : set_alv_field_catalog
-        FOR TESTING
-     .
+                         FOR TESTING
+                 , get_flights_via_carrier
+                         FOR TESTING.
 ENDCLASS.
 CLASS tester                           IMPLEMENTATION.
   METHOD set_alv_field_catalog.
@@ -312,4 +314,68 @@ CLASS tester                           IMPLEMENTATION.
       msg                         = 'ALV fieldcatalog is empty'
       ).
   ENDMETHOD.
+
+  METHOD get_flights_via_carrier.
+    CONSTANTS    : lufthansa      TYPE s_carr_id VALUE 'LH'
+                 , united_airlines
+                                  TYPE s_carr_id VALUE 'UA'
+                 , american_airlines
+                                  TYPE s_carr_id VALUE 'AA'
+                 .
+    DATA         : failure_message
+                                  TYPE string
+                 , flights_entry  LIKE LINE
+                                    OF flights_stack
+                 , carrier_id_stack
+                                  TYPE TABLE
+                                    OF s_carr_id
+                 , carrier_id_entry
+                                  LIKE LINE
+                                    OF carrier_id_stack
+                 .
+    " This unit test is modelled after the example unit test presented
+    " in the book "ABAP Objects - ABAP Programming in SAP NetWeaver",
+    " 2nd edition, by Horst Keller and Sascha Kruger (Galileo Press,
+    " 2007, ISBN 978-1-59229-079-6).  Refer to the sample listing 13.3
+    " starting on page 964.  Here we insure that the list of flights
+    " retrieved contains only those flights for the specified carrier.
+    APPEND: lufthansa             TO carrier_id_stack
+          , united_airlines       TO carrier_id_stack
+          , american_airlines     TO carrier_id_stack
+          .
+    LOOP AT carrier_id_stack
+       INTO carrier_id_entry.
+      CONCATENATE 'Selection of'
+                  carrier_id_entry
+                  'gives different airlines'
+             INTO failure_message SEPARATED BY space.
+      PERFORM get_flights_via_carrier USING carrier_id_entry.
+      " We have specified a quit parameter for the next assertion.
+      " The default action is to terminate the test method upon encountering
+      " an error.  We do not want to terminate this test method with the
+      " first error because we intend to run this test for multiple carriers
+      " as identified in the outer loop, allowing ABAP Unit test errors to
+      " be issued for whichever carriers they apply.
+      " Notice also that the value specified for the quit parameter is a
+      " constant defined in class cl_aunit_assert.  Class cl_aunit_assert
+      " is the name of the first generation of ABAP Unit assertion class.
+      " It still exists and still can be used, but SAP has since superseded
+      " this class with the more descriptively named assertion class
+      " cl_abap_unit_assert.  We are using the old class name here because its
+      " static attributes were not made available to class cl_abap_unit_assert.
+      LOOP AT flights_stack
+         INTO flights_entry.
+        cl_abap_unit_assert=>assert_equals(
+          act                     = flights_entry-carrid
+          exp                     = carrier_id_entry
+          msg                     = failure_message
+          quit                    = cl_aunit_assert=>no
+          ).
+        IF flights_entry-carrid NE carrier_id_entry.
+          EXIT. " loop at flights_stack
+        ENDIF.
+      ENDLOOP.
+    ENDLOOP.
+  ENDMETHOD.
+
 ENDCLASS.
