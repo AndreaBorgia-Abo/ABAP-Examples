@@ -10,6 +10,7 @@
 *& https://blogs.sap.com/2021/04/14/getting-acquainted-with-automating-abap-unit-testing-part-5/
 *& https://blogs.sap.com/2021/04/18/getting-acquainted-with-automating-abap-unit-testing-part-6/
 *& https://blogs.sap.com/2021/04/21/getting-acquainted-with-automating-abap-unit-testing-part-7/
+*& https://blogs.sap.com/2021/04/25/getting-acquainted-with-automating-abap-unit-testing-part-8/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -101,7 +102,7 @@ FORM get_flights_via_carrier USING carrier
         SELECT *
           INTO TABLE flights_stack
           FROM (flights_table_name)
-         WHERE carrid               EQ 'LH'
+         WHERE carrid               EQ carrier.
              .
       CATCH cx_root ##NO_HANDLER ##CATCH_ALL.
         " Nothing to do other than intercept potential exception due to
