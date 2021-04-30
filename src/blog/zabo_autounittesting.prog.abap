@@ -11,6 +11,7 @@
 *& https://blogs.sap.com/2021/04/18/getting-acquainted-with-automating-abap-unit-testing-part-6/
 *& https://blogs.sap.com/2021/04/21/getting-acquainted-with-automating-abap-unit-testing-part-7/
 *& https://blogs.sap.com/2021/04/25/getting-acquainted-with-automating-abap-unit-testing-part-8/
+*& https://blogs.sap.com/2021/04/28/getting-acquainted-with-automating-abap-unit-testing-part-9/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -103,7 +104,7 @@ FORM get_flights_via_carrier USING carrier
           INTO TABLE flights_stack
           FROM (flights_table_name)
          WHERE carrid               EQ carrier.
-             .
+        .
       CATCH cx_root ##NO_HANDLER ##CATCH_ALL.
         " Nothing to do other than intercept potential exception due to
         " invalid dynamic table name
@@ -296,7 +297,10 @@ CLASS tester                           DEFINITION
     METHODS      : set_alv_field_catalog
                          FOR TESTING
                  , get_flights_via_carrier
-                         FOR TESTING.
+                         FOR TESTING
+                 , set_alv_function_module_name
+                     FOR TESTING
+                 .
 ENDCLASS.
 CLASS tester                           IMPLEMENTATION.
   METHOD set_alv_field_catalog.
@@ -377,6 +381,42 @@ CLASS tester                           IMPLEMENTATION.
         ENDIF.
       ENDLOOP.
     ENDLOOP.
+  ENDMETHOD.
+
+  METHOD set_alv_function_module_name.
+    CONSTANTS    : list_flag      TYPE xflag     VALUE space
+                 , grid_flag      TYPE xflag     VALUE 'X'
+                 .
+    DATA         : alv_display_function_module
+                                  TYPE progname
+                 .
+    " The user may select to display the report using alv classic list
+    " or alv grid control.  The function modules facilitating these use
+    " the same parameter interface and the name of each one contains the
+    " string "LIST" or "GRID" respectively.  Here we insure that we
+    " get the correct function module name resolved when we provide the
+    " flag indicating whether or not to use the grid control.
+    PERFORM set_alv_function_module_name USING list_flag
+                                      CHANGING alv_display_function_module.
+    " Here we use the level parameter to indicate that although we may
+    " get the incorrect name of the function module based on the selection
+    " flag, it is not a critial error (the default for not specifying level).
+    cl_abap_unit_assert=>assert_char_cp(
+          act                     = alv_display_function_module
+          exp                     = '*LIST*'
+          msg                     = 'Incorrect ALV program name selected'
+          level                   = cl_aunit_assert=>tolerable
+          quit                    = cl_aunit_assert=>no
+          ).
+    PERFORM set_alv_function_module_name USING grid_flag
+                                      CHANGING alv_display_function_module.
+    cl_abap_unit_assert=>assert_char_cp(
+          act                     = alv_display_function_module
+          exp                     = '*GRID*'
+          msg                     = 'Incorrect ALV program name selected'
+          level                   = cl_aunit_assert=>tolerable
+          quit                    = cl_aunit_assert=>no
+          ).
   ENDMETHOD.
 
 ENDCLASS.
