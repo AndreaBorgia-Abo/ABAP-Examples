@@ -12,6 +12,7 @@
 *& https://blogs.sap.com/2021/04/21/getting-acquainted-with-automating-abap-unit-testing-part-7/
 *& https://blogs.sap.com/2021/04/25/getting-acquainted-with-automating-abap-unit-testing-part-8/
 *& https://blogs.sap.com/2021/04/28/getting-acquainted-with-automating-abap-unit-testing-part-9/
+*& https://blogs.sap.com/2021/05/02/getting-acquainted-with-automating-abap-unit-testing-part-10/
 *&---------------------------------------------------------------------*
 REPORT zabo_autounittesting.
 
@@ -271,7 +272,7 @@ FORM set_alv_function_module_name USING alv_style_grid
   CONSTANTS    : alv_list_function_module
                                 TYPE progname  VALUE 'REUSE_ALV_LIST_DISPLAY'
                , alv_grid_function_module
-                                TYPE progname  VALUE 'REUSE_ALV_LIST_DISPLAY'
+                                TYPE progname  VALUE 'REUSE_ALV_GRID_DISPLAY'
                .
   " Set name of function module corresponding to selected style of alv
   " report - list or grid:
