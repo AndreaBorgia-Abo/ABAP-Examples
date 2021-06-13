@@ -9,11 +9,23 @@ REPORT zabo_excel_without_abap2xlsx.
 
 DATA: lv_xls_file TYPE string VALUE `/tmp/sflight_no_abap2xlsx.xlsx`,
       t_rawdata   TYPE solix_tab.
-
+* Older ABAP:
+*DATA: lo_data_ref TYPE REF TO data,
+*      lv_xstring  TYPE xstring,
+*      bytecount   TYPE i,
+*      lo_mail     TYPE REF TO zabo_itab_to_excel.
 
 SELECT * FROM sflight
 INTO TABLE @DATA(t_sflight).
 
+* Older ABAP:
+*GET REFERENCE OF t_sflight INTO lo_data_ref.
+*CREATE OBJECT lo_mail.
+*lv_xstring = lo_mail->itab_to_xstring( lo_data_ref ).
+*t_rawdata = cl_bcs_convert=>xstring_to_solix( iv_xstring  = lv_xstring ).
+*bytecount = xstrlen( lv_xstring ).
+
+* Newer ABAP:
 GET REFERENCE OF t_sflight INTO DATA(lo_data_ref).
 DATA(lv_xstring) = NEW zabo_itab_to_excel( )->itab_to_xstring( lo_data_ref ).
 t_rawdata = cl_bcs_convert=>xstring_to_solix( iv_xstring  = lv_xstring ).
