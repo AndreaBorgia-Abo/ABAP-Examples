@@ -12,7 +12,7 @@ REPORT zabo_unit_test_no_tdf.
 
 
 "! This interface enables switching between real and mock data
-"! for the purporse of unit tests.
+"! for the purpose of unit tests.
 INTERFACE lif_client_getter.
   TYPES client  TYPE t000.
   TYPES clients TYPE TABLE OF t000 WITH KEY mandt.
@@ -36,21 +36,24 @@ CLASS lcl_system_clients DEFINITION
 ENDCLASS.
 
 CLASS lcl_system_clients IMPLEMENTATION.
+
   METHOD lif_client_getter~get_clients.
+    DATA: single_result TYPE lif_client_getter=>client.
+
     IF client IS INITIAL.
       SELECT * FROM t000 AS clients
         INTO TABLE result.
     ELSE.
       SELECT SINGLE * FROM t000 AS clients
-        INTO @DATA(single_result)
-        WHERE mandt = @client.
+        INTO single_result
+        WHERE mandt = client.
       IF single_result IS NOT INITIAL.
         APPEND single_result TO result.
       ENDIF.
     ENDIF.
   ENDMETHOD.
-ENDCLASS.
 
+ENDCLASS.
 
 "! This class extracts all system clients
 CLASS lcl_extract_data DEFINITION.
