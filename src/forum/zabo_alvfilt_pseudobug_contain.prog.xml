@@ -3,7 +3,7 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <PROGDIR>
-    <NAME>ZABO_ALVFILTER_PSEUDOBUG</NAME>
+    <NAME>ZABO_ALVFILT_PSEUDOBUG_CONTAIN</NAME>
     <SUBC>1</SUBC>
     <RSTAT>T</RSTAT>
     <RLOAD>E</RLOAD>
@@ -13,14 +13,14 @@
    <DYNPROS>
     <item>
      <HEADER>
-      <PROGRAM>ZABO_ALVFILTER_PSEUDOBUG</PROGRAM>
+      <PROGRAM>ZABO_ALVFILT_PSEUDOBUG_CONTAIN</PROGRAM>
       <SCREEN>0100</SCREEN>
       <LANGUAGE>E</LANGUAGE>
       <DESCRIPT>Custom container</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0100</NEXTSCREEN>
       <LINES>027</LINES>
-      <COLUMNS>121</COLUMNS>
+      <COLUMNS>122</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -38,21 +38,6 @@
       </RPY_DYCATT>
      </CONTAINERS>
      <FIELDS>
-      <RPY_DYFATC>
-       <CONT_TYPE>SCREEN</CONT_TYPE>
-       <CONT_NAME>SCREEN</CONT_NAME>
-       <TYPE>PUSH</TYPE>
-       <NAME>BACK</NAME>
-       <TEXT>BACK</TEXT>
-       <LINE>001</LINE>
-       <COLUMN>005</COLUMN>
-       <LENGTH>004</LENGTH>
-       <VISLENGTH>004</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <PUSH_FCODE>BACK</PUSH_FCODE>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-      </RPY_DYFATC>
       <RPY_DYFATC>
        <CONT_TYPE>SCREEN</CONT_TYPE>
        <CONT_NAME>SCREEN</CONT_NAME>
@@ -183,8 +168,8 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Report ZABO_ALVFILTER_PSEUDOBUG</ENTRY>
-     <LENGTH>31</LENGTH>
+     <ENTRY>ALV refresh filter demo (container)</ENTRY>
+     <LENGTH>35</LENGTH>
     </item>
    </TPOOL>
   </asx:values>
