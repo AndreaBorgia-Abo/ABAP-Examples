@@ -36,6 +36,8 @@ CLASS lcl_app IMPLEMENTATION.
   ENDMETHOD.
   METHOD screen_0100_pai.
     IF sy-ucomm = 'BACK'.
+* Without the following line, setting a filter in the ALV, navigating back one screen
+* and then re-entering the ALV results in the filter being still present: this is NOT a bug!
 ******alv->free( ). FREE alv. custom_container->free( ). FREE custom_container.
       SET SCREEN 0.
     ENDIF.
