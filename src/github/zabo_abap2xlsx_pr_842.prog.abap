@@ -6,6 +6,9 @@
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_pr_842.
 
+DATA: media_source TYPE c.
+
+
 CLASS lc_test DEFINITION.
   PUBLIC SECTION.
     CLASS-METHODS testchar
@@ -22,4 +25,8 @@ ENDCLASS.
 START-OF-SELECTION.
   lc_test=>testchar( cl_abap_conv_in_ce=>uccp( 'FFFD' ) ).
   lc_test=>testchar( `Longer text` ).
+
+  media_source = `Longer text`.
+  lc_test=>testchar( media_source ).
+
   cl_demo_output=>display( ).
