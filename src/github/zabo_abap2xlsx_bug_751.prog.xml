@@ -13,7 +13,7 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Program ZABO_ABAP2XLSX_BUG_751</ENTRY>
+     <ENTRY>Test for abap2xlsx bug 751</ENTRY>
      <LENGTH>30</LENGTH>
     </item>
    </TPOOL>

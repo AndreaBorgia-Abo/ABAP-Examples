@@ -13,8 +13,8 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Test for PR 842</ENTRY>
-     <LENGTH>15</LENGTH>
+     <ENTRY>Test for abap2xlsx PR 842</ENTRY>
+     <LENGTH>25</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

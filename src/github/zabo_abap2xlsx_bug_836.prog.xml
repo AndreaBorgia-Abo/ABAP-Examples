@@ -13,7 +13,7 @@
    <TPOOL>
     <item>
      <ID>R</ID>
-     <ENTRY>Test for bug abap2xlsx bug 836</ENTRY>
+     <ENTRY>Test for abap2xlsx bug 836</ENTRY>
      <LENGTH>30</LENGTH>
     </item>
    </TPOOL>
