@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_BUG_819
 *&---------------------------------------------------------------------*
 *& Author: Sandra Rossi
-*& Source: https://github.com/sapmentors/abap2xlsx/issues/819#issue-1014141719
+*& Source: https://github.com/abap2xlsx/abap2xlsx/issues/819#issue-1014141719
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_bug_819.
 

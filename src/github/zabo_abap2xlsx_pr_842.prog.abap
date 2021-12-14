@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_PR_842
 *&---------------------------------------------------------------------*
 *& Author: Andrea Borgia
-*& Refers to: https://github.com/sapmentors/abap2xlsx/pull/842
+*& Refers to: https://github.com/abap2xlsx/abap2xlsx/pull/842
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_pr_842.
 

@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_BUG_867
 *&---------------------------------------------------------------------*
 *& Author: Sandra Rossi
-*& Source: https://github.com/sapmentors/abap2xlsx/issues/867#issue-1041627058
+*& Source: https://github.com/abap2xlsx/abap2xlsx/issues/867#issue-1041627058
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_bug_867.
 CONSTANTS: gc_save_file_name TYPE string VALUE 'test.xlsx'.
@@ -25,7 +25,7 @@ START-OF-SELECTION.
           ip_url          = 'https://www.google.com'
           ip_is_internal  = abap_false ).
 * lo_worksheet->set_cell( ip_column = 1 ip_row = 3 ip_value = '' ). " workaround bug 866
-* See https://github.com/sapmentors/abap2xlsx/issues/866#issuecomment-967222653
+* See https://github.com/abap2xlsx/abap2xlsx/issues/866#issuecomment-967222653
   lo_worksheet->set_cell( ip_column = 2 ip_row = 3 ip_value = '' ).
   lo_worksheet->set_area_formula(
           ip_column_start = 'A'

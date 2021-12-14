@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_PR_869
 *&---------------------------------------------------------------------*
 *& Author: Sandra Rossi
-*& Source: https://github.com/sapmentors/abap2xlsx/pull/869#issuecomment-968069559
+*& Source: https://github.com/abap2xlsx/abap2xlsx/pull/869#issuecomment-968069559
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_pr_869.
 

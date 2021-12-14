@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_BUG_894
 *&---------------------------------------------------------------------*
 *& Author: Sandra Rossi
-*& Source: https://github.com/sapmentors/abap2xlsx/files/7577209/abap_program_to_compare_writer_and_huge_writer.txt
+*& Source: https://github.com/abap2xlsx/abap2xlsx/files/7577209/abap_program_to_compare_writer_and_huge_writer.txt
 *&---------------------------------------------------------------------*
 REPORT zabo_abap2xlsx_bug_894.
 

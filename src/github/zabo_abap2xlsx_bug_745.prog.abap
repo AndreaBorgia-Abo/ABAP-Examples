@@ -2,7 +2,7 @@
 *& Report ZABO_ABAP2XLSX_BUG_745
 *&---------------------------------------------------------------------*
 *& Author: Sandra Rossi
-*& Source: https://github.com/sapmentors/abap2xlsx/issues/745#issuecomment-933805297
+*& Source: https://github.com/abap2xlsx/abap2xlsx/issues/745#issuecomment-933805297
 *&---------------------------------------------------------------------*
 *& Run it with ALV_ONLY selected, hide some columns and total some other, save the layout as default
 *& Run it with BINDONLY selected => no hidden columns and no total.
