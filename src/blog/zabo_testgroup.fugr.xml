@@ -24,11 +24,6 @@
        <TYP>CHAR1</TYP>
       </RSEXP>
      </EXPORT>
-     <EXCEPTION>
-      <RSEXC>
-       <EXCEPTION>ZEXCEPTION</EXCEPTION>
-      </RSEXC>
-     </EXCEPTION>
      <DOCUMENTATION>
       <RSFDO>
        <PARAMETER>I_INPUT</PARAMETER>
@@ -39,11 +34,6 @@
        <PARAMETER>O_OUTPUT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Single-Character Flag</STEXT>
-      </RSFDO>
-      <RSFDO>
-       <PARAMETER>ZEXCEPTION</PARAMETER>
-       <KIND>X</KIND>
-       <STEXT>something else</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>

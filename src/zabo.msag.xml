@@ -12,7 +12,7 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZABO</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>Some text</TEXT>
+     <TEXT>&amp;</TEXT>
     </T100>
    </T100>
   </asx:values>
