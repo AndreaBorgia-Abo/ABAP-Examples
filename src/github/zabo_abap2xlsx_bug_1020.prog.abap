@@ -42,4 +42,7 @@ START-OF-SELECTION.
   lv_date = sy-datum.
   lo_worksheet->set_cell( ip_column = 1 ip_row = 11 ip_value = lv_date ).
 
+  DATA(lv_time) = sy-timlo.
+  lo_worksheet->set_cell( ip_column = 1 ip_row = 12 ip_value = lv_time ).
+
   lcl_output=>output( lo_excel ).
