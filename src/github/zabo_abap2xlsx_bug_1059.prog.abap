@@ -15,6 +15,7 @@ DATA: excel            TYPE REF TO zcl_excel,
       msg              TYPE string,
       worksheet        TYPE REF TO zcl_excel_worksheet,
       existing_col     TYPE REF TO zcl_excel_column,
+      nonexisting_col  TYPE REF TO zcl_excel_column,
       output_file_path TYPE string.
 
 
@@ -54,11 +55,16 @@ START-OF-SELECTION.
         worksheet->set_cell( ip_column = 2 ip_row = 3 ip_value = 'C43' ).
       ENDIF.
 
-* Demonstrates adding a new column at the end
-      worksheet->add_new_column( ip_column = 3 ).
-      worksheet->set_cell( ip_column = 3 ip_row = 1 ip_value = 'COL5' ).
-      worksheet->set_cell( ip_column = 3 ip_row = 2 ip_value = 'C52' ).
-      worksheet->set_cell( ip_column = 3 ip_row = 3 ip_value = 'C53' ).
+* Intended to demonstrate adding a new column at the end,
+* unfortunately get_column will call add_new_column internally
+* so this path is never taken!
+      nonexisting_col = worksheet->get_column( ip_column = 3 ).
+      IF nonexisting_col IS NOT BOUND.
+        worksheet->add_new_column( ip_column = 3 ).
+        worksheet->set_cell( ip_column = 3 ip_row = 1 ip_value = 'COL5' ).
+        worksheet->set_cell( ip_column = 3 ip_row = 2 ip_value = 'C52' ).
+        worksheet->set_cell( ip_column = 3 ip_row = 3 ip_value = 'C53' ).
+      ENDIF.
 
       CREATE OBJECT writer TYPE zcl_excel_WRITER_2007.
       lv_file = writer->write_file( excel ).
